@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# github.com/wpxq
 __version__ = "1.0"
 from pathlib import Path
 import datetime, os

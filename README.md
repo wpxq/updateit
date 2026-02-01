@@ -29,3 +29,6 @@ Updates all packages from All Package Managers
 
 ### `--latest`
 Shows the latest update
+
+### `--refresh`
+Fetch new version from this github repo

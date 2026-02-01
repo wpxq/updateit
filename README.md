@@ -21,6 +21,7 @@ Updates all packages from All Package Managers
 - Yay
 - PIP
 - NPM
+- Portage (Gentoo)
 
 ### `--latest`
 Shows the latest update

@@ -13,22 +13,27 @@ CLI tool to update all package managers and check the latest update date
 ### `--update`  
 Updates all packages from All Package Managers
 
-**List of package managers:**
-- Pacman
-- Flatpak
-- DNF
-- Snap
-- Yay
-- PIP
-- NPM
-- Portage
-- Zypper
-- Brew
-- PKG
-- APT
+| Package Managers |
+| ---------------- |
+| Pacman           |
+| Flatpak          |
+| DNF              |
+| Snap             |
+| Yay              |
+| PIP              |
+| NPM              |
+| Portage          |
+| Zypper           |
+| Brew             |
+| PKG              |
+| APT              |
 
 ### `--latest`
 Shows the latest update
 
 ### `--refresh`
 Fetch new version from this github repo
+
+
+### `--version`
+Shows current version of updateit

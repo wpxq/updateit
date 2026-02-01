@@ -63,7 +63,7 @@ def refresh():
     resp = r.get(url)
     if resp.status_code == 200:
         with open("updateit.py", "wb") as f:
-            f.write(resp.content)
+            f.write(r.content)
         print("Succesfully fetch update")
     else:
         print("Failed to fetch update")
@@ -73,7 +73,7 @@ def refresh():
     target = Path.home() / ".local" / "bin"
     target.mkdir(parents=True, exist_ok=True)
     st = os.stat(updateit_f)
-    os.chmod(updateit_f, st.st_mode | stat.S_EXEC)
+    os.chmod(updateit_f, st.st_mode | stat.S_IEXEC)
     shutil.copy(updateit_f, target / updateit_alias)
     print(f"{updateit_f} refreshed")
 

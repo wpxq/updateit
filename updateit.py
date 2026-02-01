@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-__version__ = "2.0"
+__version__ = "1.0"
 from pathlib import Path
 import datetime, os
 import shutil, sys
@@ -63,20 +63,19 @@ def refresh():
     resp = r.get(url)
     if resp.status_code == 200:
         with open("updateit.py", "wb") as f:
-            f.write(resp.content)
+            f.write(r.content)
         print("Succesfully fetch update")
     else:
         print("Failed to fetch update")
         return
     updateit_f = "updateit.py"
     updateit_alias = "updateit"
+    target = Path.home() / ".local" / "bin"
+    target.mkdir(parents=True, exist_ok=True)
     st = os.stat(updateit_f)
-    os.chmod(updateit_f, st.st_mode | stat.S_IEXEC)
-    shutil.copy(updateit_f, f"/usr/local/bin/{updateit_alias}")
+    os.chmod(updateit_f, st.st_mode | stat.S_EXEC)
+    shutil.copy(updateit_f, target / updateit_alias)
     print(f"{updateit_f} refreshed")
-
-def show_ver():
-    print(f"Version: [{__version__}]")
 
 if len(sys.argv) !=2:
     commands = """
@@ -101,8 +100,6 @@ elif arg == "--update":
     updateit()
 elif arg == "--refresh":
     refresh()
-elif arg == "--version":
-    show_ver()
 else:
     print("Unknown arg, try --help")
     sys.exit(1)

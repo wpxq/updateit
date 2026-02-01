@@ -1,8 +1,8 @@
 #!/usr/bin/env python
-# updateit v2
 from pathlib import Path
 import datetime, os
 import shutil, sys
+import stat, requests as r
 
 log_path = Path.home() / ".local/share/updateit/latest.log"
 log_path.parent.mkdir(parents=True, exist_ok=True)
@@ -57,6 +57,23 @@ def updateit():
         else:
             print(f"[{start}] Skipping {name}: package manager is not installed")
 
+def refresh():
+    url = "https://raw.githubusercontent.com/wpxq/updateit/refs/heads/main/updateit.py"
+    resp = r.get(url)
+    if resp.status_code == 200:
+        with open("updateit.py", "wb") as f:
+            f.write(r.content)
+        print("Succesfully fetch update")
+    else:
+        print("Failed to fetch update")
+        return
+    updateit_f = "updateit.py"
+    updateit_alias = "updateit"
+    st = os.stat(updateit_f)
+    os.chmod(updateit_f, st.st_mode | stat.S_EXEC)
+    shutil.copy(updateit_f, f"/usr/local/bin/{updateit_alias}")
+    print(f"{updateit_f} refreshed")
+
 if len(sys.argv) !=2:
     commands = """
 updateit [--update] Updates package managers
@@ -78,6 +95,8 @@ elif arg == "--latest":
     show_log()
 elif arg == "--update":
     updateit()
+elif arg == "--refresh":
+    refresh()
 else:
     print("Unknown arg, try --help")
     sys.exit(1)

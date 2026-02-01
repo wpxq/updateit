@@ -16,12 +16,16 @@ Updates all packages from All Package Managers
 **List of package managers:**
 - Pacman
 - Flatpak
-- Dandified YUM [DNF]
+- DNF
 - Snap
 - Yay
 - PIP
 - NPM
-- Portage (Gentoo)
+- Portage
+- Zypper
+- Brew
+- PKG
+- APT
 
 ### `--latest`
 Shows the latest update

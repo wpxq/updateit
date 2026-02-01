@@ -75,6 +75,9 @@ def refresh():
     shutil.copy(updateit_f, f"/usr/local/bin/{updateit_alias}")
     print(f"{updateit_f} refreshed")
 
+def show_ver():
+    print(f"Version: [{__version__}]")
+
 if len(sys.argv) !=2:
     commands = """
 updateit [--update] Updates package managers
@@ -98,6 +101,8 @@ elif arg == "--update":
     updateit()
 elif arg == "--refresh":
     refresh()
+elif arg == "--version":
+    show_ver()
 else:
     print("Unknown arg, try --help")
     sys.exit(1)

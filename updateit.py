@@ -27,7 +27,8 @@ pkg_managers = [
     ("Snap", "sudo snap refresh"),
     ("Yay", "yay -Syu"),
     ("Pip", "pip install --upgrade pip && pip list --outdated --format=freeze | cut -d = -f 1 | xargs -n1 pip install -U"),
-    ("Npm", "npm update -g")
+    ("Npm", "npm update -g"),
+    ("Portage", "sudo emerge --sync && sudo emerge -uDN @world")
 ]
 
 def clear():

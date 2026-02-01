@@ -13,7 +13,7 @@ CLI tool to update all package managers and check the latest update date
 ### `--update`  
 Updates all packages from All Package Managers
 
-| **Package Managers** |
+| Package Managers |
 | ---------------- |
 | Pacman           |
 | Flatpak          |
@@ -33,7 +33,6 @@ Shows the latest update
 
 ### `--refresh`
 Fetch new version from this github repo
-
 
 ### `--version`
 Shows current version of updateit

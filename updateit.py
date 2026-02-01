@@ -63,7 +63,7 @@ def refresh():
     resp = r.get(url)
     if resp.status_code == 200:
         with open("updateit.py", "wb") as f:
-            f.write(r.content)
+            f.write(resp.content)
         print("Succesfully fetch update")
     else:
         print("Failed to fetch update")

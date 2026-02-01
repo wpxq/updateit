@@ -13,7 +13,7 @@ CLI tool to update all package managers and check the latest update date
 ### `--update`  
 Updates all packages from All Package Managers
 
-| Package Managers |
+| **Package Managers** |
 | ---------------- |
 | Pacman           |
 | Flatpak          |

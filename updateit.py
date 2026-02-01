@@ -83,8 +83,10 @@ def show_ver():
 
 if len(sys.argv) !=2:
     commands = """
-updateit [--update] Updates package managers
-updateit [--latest] Shows latest update log 
+updateit [--update] Updates all packages from All Package Managers
+updateit [--latest] Shows the latest update
+updateit [--refresh] Fetch new version from this github repo
+updateit [--version] Shows current version of updateit
 """
     print(commands)
     sys.exit(1)
@@ -92,16 +94,18 @@ arg = sys.argv[1]
 
 if arg == "--help":
     commands = """
-updateit [--update] Updates package managers
-updateit [--latest] Shows latest update log 
+updateit [--update] Updates all packages from All Package Managers
+updateit [--latest] Shows the latest update
+updateit [--refresh] Fetch new version from this github repo
+updateit [--version] Shows current version of updateit
 """
     print(commands)
     sys.exit(1)
 
-elif arg == "--latest":
-    show_log()
 elif arg == "--update":
     updateit()
+elif arg == "--latest":
+    show_log()
 elif arg == "--refresh":
     refresh()
 elif arg == "--version":

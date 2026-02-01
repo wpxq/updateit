@@ -31,7 +31,8 @@ pkg_managers = [
     ("Portage", "sudo emerge --sync && sudo emerge -uDN @world"),
     ("Zypper", "sudo zypper refresh && sudo zypper update"),
     ("Brew", "brew update && brew upgrade"),
-    ("PKG", "sudo pkg update && sudo pkg upgrade")
+    ("PKG", "sudo pkg update && sudo pkg upgrade"),
+    ("APT", "sudo apt update && sudo apt upgrade -y")
 ]
 
 def clear():

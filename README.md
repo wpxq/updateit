@@ -1,5 +1,7 @@
 # Package Manager Updater
 
+![ppush](https://github.com/wpxq/updateit/blob/main/updateit.png)
+
 ---
 
 CLI tool to update all package managers and check the latest update date 

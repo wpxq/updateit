@@ -6,7 +6,7 @@ CLI tool to update all package managers and check the latest update date
 
 ---
 
-## Funcs
+## Functions
 
 ### `--update`  
 Updates all packages from All Package Managers

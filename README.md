@@ -36,3 +36,11 @@ if there are any problems with the path:
 
 ### `--version`
 Shows current version of updateit
+
+## Setup
+1. Clone this repo
+2. Run the provided installation bash script:
+   ```bash
+   chmod +x updateit_setup.sh
+   ./updateit_setup.sh
+   ```

@@ -37,6 +37,10 @@ if there are any problems with the path:
 ### `--version`
 Shows current version of updateit
 
+## Requirements:
+* Python 3.11 or higher
+* `requests` library
+
 ## Setup
 1. Clone this repo
 2. Run the provided installation bash script:

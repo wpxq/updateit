@@ -16,17 +16,24 @@ Updates all packages from All Package Managers
 | Package Managers |
 | ---------------- |
 | Pacman           |
-| Flatpak          |
-| DNF              |
-| Snap             |
+| Xbps             |
+| Dnf              |
 | Yay              |
-| PIP              |
-| NPM              |
+| Pkg              |
+| Apt              |
 | Portage          |
 | Zypper           |
+| Flatpak          |
+| Snap             |
+| Pip              |
+| Npm              |
 | Brew             |
-| PKG              |
-| APT              |
+| Pnpm             |
+| Cargo            |
+
+### `Cargo` (IMPORTANT!)
+- For Cargo updates, you must have `cargo-update` installed:
+##### cargo install cargo-update
 
 ### `--latest`
 Shows the latest update

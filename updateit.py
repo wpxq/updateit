@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # github.com/wpxq
-__version__ = "2.0"
+__version__ = "2.1.0"
 from pathlib import Path
 import datetime, os
 import shutil, sys
@@ -24,17 +24,20 @@ def has_cmd(cmd):
 
 pkg_managers = [
     ("Pacman", "sudo pacman -Syu"),
-    ("Flatpak", "flatpak update"),
-    ("DNF", "sudo dnf upgrade"),
-    ("Snap", "sudo snap refresh"),
+    ("Xbps", "sudo xbps-install -u xbps && sudo xbps-install -Su"),
+    ("Dnf", "sudo dnf upgrade"),
     ("Yay", "yay -Syu"),
-    ("Pip", "pip install --upgrade pip && pip list --outdated --format=freeze | cut -d = -f 1 | xargs -n1 pip install -U"),
-    ("Npm", "npm update -g"),
+    ("PKG", "sudo pkg update && sudo pkg upgrade"),
+    ("APT", "sudo apt update && sudo apt upgrade -y"),
     ("Portage", "sudo emerge --sync && sudo emerge -uDN @world"),
     ("Zypper", "sudo zypper refresh && sudo zypper update"),
+    ("Flatpak", "flatpak update"),
+    ("Snap", "sudo snap refresh"),
+    ("Pip", "pip install --upgrade pip && pip list --outdated --format=freeze | cut -d = -f 1 | xargs -n1 pip install -U"),
+    ("Npm", "npm update -g"),
     ("Brew", "brew update && brew upgrade"),
-    ("PKG", "sudo pkg update && sudo pkg upgrade"),
-    ("APT", "sudo apt update && sudo apt upgrade -y")
+    ("Pnpm", "pnpm add -g pnpm && pnpm update -g"),
+    ("Cargo", "cargo install-update -a"),
 ]
 
 def clear():

@@ -2,7 +2,7 @@
 # github.com/wpxq
 __version__ = "2.1.0"
 from pathlib import Path
-import datetime, os
+import datetime, os, re
 import shutil, sys
 import stat, requests as r
 
@@ -50,17 +50,17 @@ def show_log():
     else:
         print("No update logged")
 
-def updateit():
-    start = write_log()
-    print(f"[{start}] Starting update...")
-
-    for name, cmd in pkg_managers:
-        if has_cmd(cmd.split()[0]):
-            print(f"[{start}] Updating {name}...")
-            os.system(cmd)
-            clear()
-        else:
-            print(f"[{start}] Skipping {name}: package manager is not installed")
+def get_latest_ver():
+    try:
+        url = "https://raw.githubusercontent.com/wpxq/updateit/refs/heads/main/updateit.py"
+        resp = r.get(url, timeout=5)
+        if resp.status_code == 200:
+            match = re.search(r'__version__\s*=\s*["\']([^"\']+)["\']', resp.text)
+            if match:
+                return match.group(1)
+    except Exception as e:
+        pass
+    return __version__
 
 def refresh():
     url = "https://raw.githubusercontent.com/wpxq/updateit/refs/heads/main/updateit.py"
@@ -80,6 +80,32 @@ def refresh():
     os.chmod(updateit_f, st.st_mode | stat.S_IEXEC)
     shutil.copy(updateit_f, target / updateit_alias)
     print(f"{updateit_f} refreshed")
+
+def updateit():
+    start = write_log()
+    print(f"[{start}] Starting update...")
+    latest_ver = get_latest_ver()
+    if list(map(int, latest_ver.split('.'))) > list(map(int, __version__.split('.'))):
+        print(f"New version of updateit is available! [{latest_ver}]")
+        ans = input("Do you want to update updateit? (y/n): ").strip().lower()
+        if ans == "y":
+            print("Updating updateit...")
+            refresh()
+            print("updateit updated to latest version")
+    ans_pkg = input("Do you want to proceed with updating packages? (y/n): ").strip().lower()
+    if ans_pkg != "y":
+        print(f"[{start}] Update cancelled by user")
+        return
+    
+    print(f"[{start}] Proceeding with package managers...")
+
+    for name, cmd in pkg_managers:
+        if has_cmd(cmd.split()[0]):
+            print(f"[{start}] Updating {name}...")
+            os.system(cmd)
+            clear()
+        else:
+            print(f"[{start}] Skipping {name}: package manager is not installed")
 
 def show_ver():
     print(f"Version: [{__version__}]")

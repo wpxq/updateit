@@ -51,7 +51,8 @@ Shows the latest update
 
 ### `--refresh`
 Fetch new version from this github repo
-if there are any problems with the path:
+
+## if there are any problems with the path:
 ##### type in .bashrc => export PATH="$HOME/.local/bin:$PATH" => save & type => source .bashrc
 
 ### `--version`

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # github.com/wpxq
-__version__ = "2.1.0"
+__version__ = "2.2.0"
 from pathlib import Path
 import datetime, os, re
 import shutil, sys
@@ -23,21 +23,34 @@ def has_cmd(cmd):
     return shutil.which(cmd) is not None
 
 pkg_managers = [
-    ("Pacman", "sudo pacman -Syu"),
-    ("Xbps", "sudo xbps-install -u xbps && sudo xbps-install -Su"),
-    ("Dnf", "sudo dnf upgrade"),
-    ("Yay", "yay -Syu"),
-    ("PKG", "sudo pkg update && sudo pkg upgrade"),
+    # System Package Managers [Main]
+    ("Pacman", "sudo pacman -Syu --noconfirm"),
+    ("Yay", "yay -Syu --noconfirm"),
+    ("Paru", "paru -Syu --noconfirm"),
+    ("Xbps", "sudo xbps-install -u xbps && sudo xbps-install -Su -y"),
+    ("DNF", "sudo dnf upgrade -y"),
+    ("PKG", "sudo pkg update && sudo pkg upgrade -y"),
     ("APT", "sudo apt update && sudo apt upgrade -y"),
     ("Portage", "sudo emerge --sync && sudo emerge -uDN @world"),
-    ("Zypper", "sudo zypper refresh && sudo zypper update"),
-    ("Flatpak", "flatpak update"),
-    ("Snap", "sudo snap refresh"),
-    ("Pip", "pip install --upgrade pip && pip list --outdated --format=freeze | cut -d = -f 1 | xargs -n1 pip install -U"),
-    ("Npm", "npm update -g"),
+    ("Zypper", "sudo zypper refresh && sudo zypper update -y"),
+    ("Nix", "nix-channel --update && nix-env -u"),
+    ("Apk", "sudo apk update && sudo apk upgrade"),
+    
+    # External Package Managers [Secondary]
     ("Brew", "brew update && brew upgrade"),
+    ("Flatpak", "flatpak update -y"),
+    ("Snap", "sudo snap refresh"),
+    ("Pip", "python3 -m pip install --upgrade pip && pip list --outdated --format=freeze | cut -d = -f 1 | xargs -n1 pip install -U"),
+    ("Npm", "npm update -g"),
     ("Pnpm", "pnpm add -g pnpm && pnpm update -g"),
     ("Cargo", "cargo install-update -a"),
+    ("Conda", "conda update --all -y"),
+    ("Yarn", "yarn global upgrade"),
+    ("Bun", "bun upgrade"),
+    ("Rustup", "rustup update"),
+    ("Deno", "deno upgrade"),
+    ("Composer", "composer self-update"),
+    ("Gems", "gem update --system"),
 ]
 
 def clear():

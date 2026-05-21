@@ -13,23 +13,38 @@ CLI tool to update all package managers and check the latest update date
 ### `--update`  
 Updates all packages from All Package Managers
 
+### System Package Managers
 | Package Managers |
-| ---------------- |
-| Pacman           |
-| Xbps             |
-| Dnf              |
-| Yay              |
-| Pkg              |
-| Apt              |
-| Portage          |
-| Zypper           |
-| Flatpak          |
-| Snap             |
-| Pip              |
-| Npm              |
-| Brew             |
-| Pnpm             |
-| Cargo            |
+| :--- |
+| Pacman |
+| Yay |
+| Paru |
+| Xbps |
+| DNF |
+| PKG |
+| APT |
+| Portage |
+| Zypper |
+| Nix |
+| Apk |
+
+### External Package Managers
+| Package Managers |
+| :--- |
+| Brew |
+| Flatpak |
+| Snap |
+| PIP |
+| NPM |
+| PNPM |
+| Cargo |
+| Conda |
+| Yarn |
+| Bun |
+| Rustup |
+| Deno |
+| Composer |
+| Gems |
 
 ### `Cargo` (IMPORTANT!)
 - For Cargo updates, you must have `cargo-update` installed:
